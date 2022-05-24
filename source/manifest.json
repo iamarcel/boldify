@@ -1,0 +1,24 @@
+{
+	"name": "Boldify",
+	"version": "1.0.0",
+	"description": "Set the first half of words to bold",
+	"homepage_url": "https://samyn.co",
+	"manifest_version": 3,
+	"icons": {
+		"128": "icon.png"
+	},
+	"permissions": ["activeTab", "scripting", "storage"],
+	"host_permissions": [],
+	"content_scripts": [],
+	"options_ui": {
+		"browser_style": true,
+		"page": "options.html"
+	},
+	"action": {
+		"default_title": "Click to Boldify"
+	},
+	"background": {
+		"service_worker": "background.js",
+		"type": "module"
+	}
+}

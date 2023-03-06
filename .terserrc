@@ -2,6 +2,12 @@
 	"mangle": false,
 	"output": {
 		"beautify": true,
-		"indent_level": 2
+		"indent_level": 2,
+		"ecma": 2015
+	},
+	"compress": {
+		"ecma": 2015,
+		"expression": true,
+		"keep_fnames": true
 	}
 }

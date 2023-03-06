@@ -7,18 +7,20 @@
 	"icons": {
 		"128": "icon.png"
 	},
-	"permissions": ["activeTab", "scripting", "storage"],
+	"permissions": ["activeTab", "scripting"],
 	"host_permissions": [],
 	"content_scripts": [],
-	"options_ui": {
-		"browser_style": true,
-		"page": "options.html"
-	},
 	"action": {
 		"default_title": "Click to Boldify"
 	},
 	"background": {
 		"service_worker": "background.js",
 		"type": "module"
-	}
+	},
+	"web_accessible_resources": [
+		{
+			"resources": ["boldify.js"],
+			"matches": []
+		}
+	]
 }

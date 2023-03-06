@@ -1,27 +1,28 @@
-// eslint-disable-next-line import/no-unassigned-import
-// import optionsStorage from "./options-storage.js";
+function split(html, loc, start, end, out) {
+	const words = html.slice(loc, start).split(" ");
+	out.push(
+		words
+			.map((word) => {
+				const len = Math.floor(word.length / 2);
 
-export function boldify() {
-	function split(html, loc, start, end, out) {
-		const words = html.slice(loc, start).split(" ");
-		out.push(
-			words
-				.map((word) => {
-					const len = Math.floor(word.length / 2);
+				return `<strong>${word.slice(0, len)}</strong>${word.slice(
+					len,
+					word.length
+				)}`;
+			})
+			.join(" ")
+	);
 
-					return `<strong>${word.slice(0, len)}</strong>${word.slice(
-						len,
-						word.length
-					)}`;
-				})
-				.join(" ")
-		);
+	out.push(html.slice(start, end));
+}
 
-		out.push(html.slice(start, end));
-	}
-
+function boldify() {
 	const re = /<[^>]+>/dgim;
-	const articles = document.getElementsByTagName("article");
+	const articles = [
+		...document.getElementsByTagName("article"),
+		...document.getElementsByClassName("article"),
+		...document.getElementsByClassName("post"),
+	];
 
 	for (const article of articles) {
 		const paragraphs = article.getElementsByTagName("p");
@@ -48,3 +49,5 @@ export function boldify() {
 		}
 	}
 }
+
+boldify();
